@@ -1,8 +1,6 @@
-import { ShoppingBag, Menu, Search, User, X } from "lucide-react";
-import { useState } from "react";
+import { ShoppingBag, Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ShoppingCart, Eye, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -125,7 +123,6 @@ const categories = [
 ];
 
 function App() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
