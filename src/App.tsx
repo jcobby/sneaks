@@ -1,7 +1,7 @@
 import { ShoppingBag, Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import { ShoppingCart, Eye, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -9,57 +9,50 @@ const products = [
   {
     id: 1,
     name: "Oversized Cotton Sweater",
-    price: 89.99,
-    image:
-      "/images/pic1.jpg",
+    price: 250,
+    image: "/images/pic1.jpg",
     category: "Sweaters",
   },
   {
     id: 2,
     name: "Vintage Denim Jacket",
-    price: 129.99,
-    image:
-      "/images/pic2.jpg",
+    price: 380,
+    image: "/images/pic2.jpg",
     category: "Jackets",
   },
   {
     id: 3,
     name: "Classic White Tee",
-    price: 86.99,
-    image:
-      "/images/pic3.jpg",
+    price: 270,
+    image: "/images/pic3.jpg",
     category: "T-Shirts",
   },
   {
     id: 4,
     name: "High-Waist Jeans",
-    price: 11.99,
-    image:
-      "/images/pic4.jpg",
+    price: 180,
+    image: "/images/pic4.jpg",
     category: "Jeans",
   },
   {
     id: 5,
     name: "High-Waist Jeans",
-    price: 84.99,
-    image:
-      "/images/pic5.jpg",
+    price: 350,
+    image: "/images/pic5.jpg",
     category: "Jeans",
   },
   {
     id: 6,
     name: "High-Waist Jeans",
-    price: 53.99,
-    image:
-      "/images/pic6.jpg",
+    price: 350,
+    image: "/images/pic6.jpg",
     category: "Jeans",
   },
   {
     id: 7,
     name: "High-Waist Jeans",
-    price: 29.99,
-    image:
-      "/images/pic7.jpg",
+    price: 280,
+    image: "/images/pic7.jpg",
     category: "Jeans",
   },
   // {
@@ -113,17 +106,39 @@ const products = [
 ];
 
 const categories = [
-  "All",
-  "New Arrivals",
-  "Sweaters",
-  "Jackets",
-  "T-Shirts",
-  "Jeans",
-  "Accessories",
+  {
+    id: 1,
+    name: "Plain Tees",
+    imageSrc: "/categoryImages/plainTees.jpg",
+  },
+  {
+    id: 2,
+    name: "Kaftan",
+    imageSrc: "/categoryImages/kaftan.jpg",
+  },
+  {
+    id: 3,
+    name: "Jackets",
+    imageSrc: "/categoryImages/jacket.jpg",
+  },
+  {
+    id: 4,
+    name: "T-Shirts",
+    imageSrc: "/categoryImages/tshirt.jpg",
+  },
+  {
+    id: 5,
+    name: "Baggy Jeans",
+    imageSrc: "/categoryImages/baggyJeans.jpg",
+  },
+  {
+    id: 6,
+    name: "Lacoste",
+    imageSrc: "/categoryImages/lacoste.jpg",
+  },
 ];
 
 function App() {
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
@@ -131,14 +146,14 @@ function App() {
         <div className="container flex h-16 items-center">
           <Sheet>
             <SheetTrigger asChild>
-            <img
-            src="/logoBlack.jpg"
-            alt="Description of the image"
-            width={100} // Set a width
-            height={400}
-          />
+              <img
+                src="/logoBlack.jpg"
+                alt="Description of the image"
+                width={100} // Set a width
+                height={400}
+              />
             </SheetTrigger>
-            <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+            {/* <SheetContent side="left" className="w-[300px] sm:w-[400px]">
               <nav className="flex flex-col gap-4">
                 {categories.map((category) => (
                   <a
@@ -150,7 +165,7 @@ function App() {
                   </a>
                 ))}
               </nav>
-            </SheetContent>
+            </SheetContent> */}
           </Sheet>
 
           <div className="flex w-full items-center gap-4 md:gap-6">
@@ -158,7 +173,7 @@ function App() {
               SNEAKS
             </a>
 
-            <nav className="hidden md:flex gap-6 mx-6">
+            {/* <nav className="hidden md:flex gap-6 mx-6">
               {categories.map((category) => (
                 <a
                   key={category}
@@ -168,7 +183,7 @@ function App() {
                   {category}
                 </a>
               ))}
-            </nav>
+            </nav> */}
 
             <div className="flex flex-1 items-center justify-end gap-4">
               <form className="hidden md:block w-full max-w-xs">
@@ -202,6 +217,11 @@ function App() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative  h-full flex items-center justify-center">
           <div className="max-w-xl flex flex-col items-center justify-center ">
+            <img 
+            src="/logoBlack.jpg"
+            alt="Description of the image"
+            width={300} // Set a width
+            height={400}/>
             <h1 className="text-4xl text-center md:text-6xl font-bold text-white mb-4">
               New Collection
             </h1>
@@ -212,6 +232,29 @@ function App() {
               Shop Now
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Categories */}
+      <section className="container py-16 px-5">
+        <h2 className="text-3xl font-bold mb-8">Categories</h2>
+        <div className="flex flex-wrap justify-center gap-6">
+          {categories.map((category) => (
+            <div key={category.id} className="flex flex-col items-center">
+              <div className="w-24 h-24 rounded-full bg-gray-100 shadow-md flex items-center justify-center overflow-hidden">
+                <img
+                  src={category.imageSrc}
+                  alt={category.name}
+                  width={96}
+                  height={96}
+                  className="object-cover"
+                />
+              </div>
+              <p className="mt-2 text-sm font-medium text-white">
+                {category.name}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -267,7 +310,7 @@ function App() {
 
                 <div className="flex items-center justify-between">
                   <span className="text-lg font-bold text-primary">
-                    ${product.price.toFixed(2)}
+                  ₵{product.price.toFixed(2)}
                   </span>
                   <div className="flex items-center space-x-1">
                     <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
@@ -305,7 +348,15 @@ function App() {
             <div>
               <h3 className="text-lg font-semibold mb-4">About Us</h3>
               <p className="text-sm text-muted-foreground">
-                LUXE is a premium clothing brand focused on quality and style.
+                Featuring our signature Sneaks logo, our collection of original
+                shorts, joggers, jeans and even womenswear are designed for the
+                modern individual who demands style and comfort in equal
+                measure. Our motto "One Step Ahead" isn't just a tagline - it's
+                a promise that with every garment, you'll be ahead of the curve
+                in both design and performance. Discover a casualwear experience
+                like no other. Elevate your style and stay ahead of the pack
+                with Your Step Ahead. Shop the collection now. Discover a
+                casualwear experience like no other.Shop the collection now.
               </p>
             </div>
             <div>
@@ -359,7 +410,9 @@ function App() {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
+              <h3 className="text-lg font-semibold mb-4">
+                Follow Us at @mckay_turns on
+              </h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
                   <a href="#" className="hover:text-foreground">
@@ -385,7 +438,7 @@ function App() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 LUXE. All rights reserved.</p>
+            <p>&copy; 2024 SNEAKS. All rights reserved.</p>
           </div>
         </div>
       </footer>
